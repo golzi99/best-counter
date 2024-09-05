@@ -11,6 +11,7 @@ function App() {
     const [counter, setCounter] = useState(startValue)
     const [isSetting, setIsSetting] = useState(false)
     const [error, setError] = useState(false)
+    const [progress, setProgress] = useState(0);
 
     const onChangeStartValue = (value: number) => {
         setStartValue(value)
@@ -32,15 +33,18 @@ function App() {
 
     const setSettings = () => {
         setCounter(startValue)
+        setProgress(startValue)
         setIsSetting(false)
     }
 
     const increaseCounter = () => {
         setCounter(c => c + 1)
+        setProgress(p => p + 1)
     }
 
     const resetCounter = () => {
         setCounter(startValue)
+        setProgress(startValue)
     }
 
     return (
@@ -57,6 +61,7 @@ function App() {
             <CounterBlock
                 maxValue={maxValue}
                 counter={counter}
+                progress={progress / maxValue}
                 disableReset={counter === startValue}
                 error={error}
                 increaseCounter={increaseCounter}
