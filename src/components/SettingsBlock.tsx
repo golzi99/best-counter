@@ -7,20 +7,21 @@ type SettingsBlockPropsType = {
     maxValue: number,
     startValue: number,
     isSetting: boolean,
+    error: boolean,
     onChangeMaxValue: (value: number) => void,
     onChangeStartValue: (value: number) => void,
     setSettings: () => void
 }
 
-export const SettingsBlock = ({maxValue, startValue, onChangeMaxValue, onChangeStartValue, setSettings}: SettingsBlockPropsType) => {
+export const SettingsBlock = ({maxValue, startValue, onChangeMaxValue, onChangeStartValue, setSettings, error}: SettingsBlockPropsType) => {
     return (
         <Block direction={'column'} gap={'36px'}>
             <SetUpperBlock direction={'column'} justify={'space-around'}>
-                <InputSetting title={'max value'} value={maxValue} onChangeHandler={onChangeMaxValue}></InputSetting>
-                <InputSetting title={'start value'} value={startValue} onChangeHandler={onChangeStartValue}></InputSetting>
+                <InputSetting title={'max value'} value={maxValue} error={startValue >= maxValue} onChangeHandler={onChangeMaxValue}></InputSetting>
+                <InputSetting title={'start value'} value={startValue} error={startValue < 0 || startValue >= maxValue} onChangeHandler={onChangeStartValue}></InputSetting>
             </SetUpperBlock>
             <SetButtonBlock justify={'center'} align={'center'}>
-                <Button onClick={setSettings}>SET</Button>
+                <Button onClick={setSettings} disabled={error}>SET</Button>
             </SetButtonBlock>
         </Block>
     )

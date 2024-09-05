@@ -49,6 +49,7 @@ function App() {
                 maxValue={maxValue}
                 startValue={startValue}
                 isSetting={isSetting}
+                error={error}
                 onChangeMaxValue={onChangeMaxValue}
                 onChangeStartValue={onChangeStartValue}
                 setSettings={setSettings}
