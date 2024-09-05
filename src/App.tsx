@@ -57,6 +57,7 @@ function App() {
             <CounterBlock
                 maxValue={maxValue}
                 counter={counter}
+                disableReset={counter === startValue}
                 error={error}
                 increaseCounter={increaseCounter}
                 resetCounter={resetCounter}

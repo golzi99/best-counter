@@ -6,13 +6,14 @@ import styled from 'styled-components';
 type CounterBlockPropsType = {
     counter: number,
     maxValue: number,
+    disableReset: boolean
     isSetting: boolean,
-    error: boolean
-    increaseCounter: () => void
-    resetCounter: () => void
+    error: boolean,
+    increaseCounter: () => void,
+    resetCounter: () => void,
 }
 
-export const CounterBlock = ({counter, maxValue, increaseCounter, resetCounter, isSetting, error}: CounterBlockPropsType) => {
+export const CounterBlock = ({counter, maxValue, increaseCounter, resetCounter, isSetting, error, disableReset}: CounterBlockPropsType) => {
     return (
         <Block direction={'column'} gap={'36px'}>
             <SetUpperBlock justify={'center'} align={'center'}>
@@ -21,7 +22,7 @@ export const CounterBlock = ({counter, maxValue, increaseCounter, resetCounter, 
             </SetUpperBlock>
             <SetButtonBlock justify={'space-around'} align={'center'}>
                 <Button onClick={increaseCounter} disabled={isSetting || counter===maxValue}>INC</Button>
-                <Button onClick={resetCounter} disabled={isSetting}>RESET</Button>
+                <Button onClick={resetCounter} disabled={isSetting || disableReset}>RESET</Button>
             </SetButtonBlock>
         </Block>
     );
