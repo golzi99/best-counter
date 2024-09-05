@@ -20,6 +20,7 @@ export const GlobalStyled = createGlobalStyle`
     color: ${myTheme.colors.font};
     line-height: 1.2;
     min-width: 360px;
+    background-color: ${myTheme.colors.bgColor};
   }
 
   button {

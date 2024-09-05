@@ -9,6 +9,7 @@ export const Block = styled(FlexWrapper)`
   max-height: 500px;
   border: ${myTheme.colors.borderColor} 2px solid;
   border-radius: 24px;
+  min-width: 520px;
 `
 
 export const SetUpperBlock = styled(FlexWrapper)`
