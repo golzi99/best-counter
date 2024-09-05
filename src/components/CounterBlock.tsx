@@ -6,8 +6,6 @@ import styled from 'styled-components';
 type CounterBlockPropsType = {
     counter: number,
     maxValue: number,
-    startValue: number,
-    progress: number,
     disableReset: boolean
     isSetting: boolean,
     error: boolean,
@@ -19,8 +17,6 @@ type CounterBlockPropsType = {
 export const CounterBlock = ({
                                  counter,
                                  maxValue,
-                                 startValue,
-                                 progress,
                                  increaseCounter,
                                  decreaseCounter,
                                  resetCounter,
@@ -34,14 +30,14 @@ export const CounterBlock = ({
                 {!isSetting ? <div>
                     <Counter reachMax={counter === maxValue}>{counter}</Counter>
                     <ProgressBarContainer>
-                        <ProgressBarFill progress={progress}/>
+                        <ProgressBarFill progress={counter / maxValue}/>
                     </ProgressBarContainer>
                 </div> : error ?
                     <ErrorMessage>Incorrect value!</ErrorMessage> : <Message>Enter values and press "SET"</Message>}
             </SetUpperBlock>
-            <SetButtonBlock justify={'space-around'} align={'center'}>
+            <SetButtonBlock justify={'space-around'} align={'center'} wrap={'wrap'}>
                 <Button onClick={increaseCounter} disabled={isSetting || counter === maxValue}>INC</Button>
-                <Button onClick={decreaseCounter} disabled={isSetting || counter === startValue}>DEC</Button>
+                <Button onClick={decreaseCounter} disabled={isSetting || disableReset}>DEC</Button>
                 <Button onClick={resetCounter} disabled={isSetting || disableReset}>RESET</Button>
             </SetButtonBlock>
         </Block>

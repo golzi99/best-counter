@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import styled from 'styled-components';
 import {SettingsBlock} from './components/SettingsBlock';
@@ -6,49 +6,48 @@ import {CounterBlock} from './components/CounterBlock';
 
 function App() {
     const [startValue, setStartValue] = useState(0)
-    const [maxValue, setMaxValue] = useState(5)
+    const [maxValue, setMaxValue] = useState(10)
     const [counter, setCounter] = useState(startValue)
     const [isSetting, setIsSetting] = useState(false)
     const [error, setError] = useState(false)
-    const [progress, setProgress] = useState(0);
+
+    useEffect(() => {
+        startValue < 0 || startValue >= maxValue ? setError(true) : setError(false)
+    }, [startValue, maxValue])
 
     const onChangeStartValue = (value: number) => {
         setStartValue(value)
-        if (value < 0 || value >= maxValue)
-            setError(true)
-        else
-            setError(false)
+        // if (value < 0 || value >= maxValue)
+        //     setError(true)
+        // else
+        //     setError(false)
         setIsSetting(true)
     }
 
     const onChangeMaxValue = (value: number) => {
         setMaxValue(value)
-        if (value <= startValue)
-            setError(true)
-        else
-            setError(false)
+        // if (value <= startValue)
+        //     setError(true)
+        // else
+        //     setError(false)
         setIsSetting(true)
     }
 
     const setSettings = () => {
         setCounter(startValue)
-        setProgress(startValue)
         setIsSetting(false)
     }
 
     const increaseCounter = () => {
         setCounter(c => c + 1)
-        setProgress(p => p + 1)
     }
 
     const decreaseCounter = () => {
         setCounter(c => c - 1)
-        setProgress(p => p - 1)
     }
 
     const resetCounter = () => {
         setCounter(startValue)
-        setProgress(startValue)
     }
 
     return (
@@ -64,9 +63,7 @@ function App() {
             />
             <CounterBlock
                 maxValue={maxValue}
-                startValue={startValue}
                 counter={counter}
-                progress={progress / maxValue}
                 disableReset={counter === startValue}
                 error={error}
                 increaseCounter={increaseCounter}
