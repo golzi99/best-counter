@@ -3,15 +3,22 @@ import {Block, SetButtonBlock, SetUpperBlock} from '../styles/StructurBlocksStyl
 import {Button} from '../styles/Button';
 import styled from 'styled-components';
 
-export const CounterBlock = () => {
+type CounterBlockPropsType = {
+    counter: number,
+    isSetting: boolean,
+    increaseCounter: () => void
+    resetCounter: () => void
+}
+
+export const CounterBlock = ({counter, increaseCounter, resetCounter, isSetting}: CounterBlockPropsType) => {
     return (
         <Block direction={'column'} gap={'36px'}>
             <SetUpperBlock justify={'center'} align={'center'}>
-                <Counter>VALUE</Counter>
+                <Counter>{counter}</Counter>
             </SetUpperBlock>
             <SetButtonBlock justify={'space-around'} align={'center'}>
-                <Button>INC</Button>
-                <Button>RESET</Button>
+                <Button onClick={increaseCounter} disabled={isSetting}>INC</Button>
+                <Button onClick={resetCounter} disabled={isSetting}>RESET</Button>
             </SetButtonBlock>
         </Block>
     );
