@@ -41,6 +41,11 @@ function App() {
         setProgress(p => p + 1)
     }
 
+    const decreaseCounter = () => {
+        setCounter(c => c - 1)
+        setProgress(p => p - 1)
+    }
+
     const resetCounter = () => {
         setCounter(startValue)
         setProgress(startValue)
@@ -59,11 +64,13 @@ function App() {
             />
             <CounterBlock
                 maxValue={maxValue}
+                startValue={startValue}
                 counter={counter}
                 progress={progress / maxValue}
                 disableReset={counter === startValue}
                 error={error}
                 increaseCounter={increaseCounter}
+                decreaseCounter={decreaseCounter}
                 resetCounter={resetCounter}
                 isSetting={isSetting}
             />
