@@ -18,7 +18,7 @@ export const InputSetting = ({title}: InputSettingPropsType) => {
 const StyledInputSetting = styled.div`
   display: flex;
   justify-content: space-between;
-  font-weight: 600;
+  font-weight: 700;
   color: ${myTheme.colors.font};
   font-size: 36px;
 `
@@ -26,7 +26,7 @@ const StyledInputSetting = styled.div`
 const Input = styled.input`
   outline: none;
   text-align: center;
-  font-weight: 600;
+  font-weight: bold;
   font-size: 16px;
   border: ${myTheme.colors.borderColor} 2px solid ;
   border-radius: 8px;

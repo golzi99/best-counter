@@ -9,19 +9,23 @@ import {Button} from './styles/Button';
 function App() {
     return (
         <Main>
-            <Block>
-                <FlexWrapper direction={'column'} gap={'48px'}>
-                    <SetValuesBlock direction={'column'} justify={'space-around'}>
-                        <InputSetting title={'max value'}></InputSetting>
-                        <InputSetting title={'start value'}></InputSetting>
-                    </SetValuesBlock>
-                    <SetButtonBlock justify={'center'}>
-                        <Button>SET</Button>
-                    </SetButtonBlock>
-                </FlexWrapper>
+            <Block direction={'column'} gap={'36px'}>
+                <SetValuesBlock direction={'column'} justify={'space-around'}>
+                    <InputSetting title={'max value'}></InputSetting>
+                    <InputSetting title={'start value'}></InputSetting>
+                </SetValuesBlock>
+                <SetButtonBlock justify={'center'} align={'center'}>
+                    <Button>SET</Button>
+                </SetButtonBlock>
             </Block>
-            <Block>
-
+            <Block direction={'column'} gap={'36px'}>
+                <CounterValue justify={'center'} align={'center'}>
+                    <Counter>VALUE</Counter>
+                </CounterValue>
+                <SetButtonBlock justify={'space-around'} align={'center'}>
+                    <Button>INC</Button>
+                    <Button>RESET</Button>
+                </SetButtonBlock>
             </Block>
         </Main>
     );
@@ -37,11 +41,11 @@ const Main = styled.main`
   height: 100vh;
 `
 
-const Block = styled.div`
+const Block = styled(FlexWrapper)`
+  width: 100%;
   padding: 24px;
   max-width: 40vw;
-  width: 100%;
-  height: 450px;
+  max-height: 450px;
   border: ${myTheme.colors.borderColor} 2px solid;
   border-radius: 24px;
 `
@@ -53,7 +57,19 @@ const SetValuesBlock = styled(FlexWrapper)`
 `
 
 const SetButtonBlock = styled(FlexWrapper)`
+  height: 50%;
   padding: 18px;
   border: ${myTheme.colors.borderColor} 2px solid;
   border-radius: 18px;
+`
+
+const CounterValue = styled(FlexWrapper)`
+  padding: 18px;
+  border: ${myTheme.colors.borderColor} 2px solid;
+  border-radius: 18px;
+`
+
+const Counter = styled.p`
+  font-size: 92px;
+  font-weight: bold;
 `

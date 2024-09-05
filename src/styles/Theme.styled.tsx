@@ -2,7 +2,7 @@ export const myTheme = {
     colors: {
         bgColor: "#242a42",
         font: "aqua",
-        borderColor: '#52c5d9',
+        borderColor: '#3e92a2',
     },
 
     media: {
