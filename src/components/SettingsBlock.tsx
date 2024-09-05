@@ -1,15 +1,15 @@
 import {InputSetting} from './InputSetting';
 import {Button} from '../styles/Button';
 import React from 'react';
-import {Block, SetButtonBlock, SetValuesBlock} from '../styles/StructurBlocksStyles';
+import {Block, SetButtonBlock, SetUpperBlock} from '../styles/StructurBlocksStyles';
 
 export const SettingsBlock = () => {
     return (
         <Block direction={'column'} gap={'36px'}>
-            <SetValuesBlock direction={'column'} justify={'space-around'}>
+            <SetUpperBlock direction={'column'} justify={'space-around'}>
                 <InputSetting title={'max value'}></InputSetting>
                 <InputSetting title={'start value'}></InputSetting>
-            </SetValuesBlock>
+            </SetUpperBlock>
             <SetButtonBlock justify={'center'} align={'center'}>
                 <Button>SET</Button>
             </SetButtonBlock>

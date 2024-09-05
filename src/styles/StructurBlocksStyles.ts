@@ -6,12 +6,12 @@ export const Block = styled(FlexWrapper)`
   width: 100%;
   padding: 24px;
   max-width: 40vw;
-  max-height: 450px;
+  max-height: 500px;
   border: ${myTheme.colors.borderColor} 2px solid;
   border-radius: 24px;
 `
 
-export const SetValuesBlock = styled(FlexWrapper)`
+export const SetUpperBlock = styled(FlexWrapper)`
   padding: 18px;
   border: ${myTheme.colors.borderColor} 2px solid;
   border-radius: 18px;
