@@ -39,5 +39,5 @@ const Input = styled.input<{error: boolean}>`
   border: ${props => props.error ? 'red 3px solid' : '{myTheme.colors.borderColor} 2px solid'};
   border-radius: 8px;
   color: #333;
-  background-color: #f9f9f9;
+  background-color: ${props => props.error ? '#ff8c8c' : '#f9f9f9'};
 `
