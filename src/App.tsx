@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import styled from 'styled-components';
 import {myTheme} from './styles/Theme.styled';
@@ -7,18 +7,26 @@ import {CounterBlock} from './components/CounterBlock';
 
 function App() {
     const [startValue, setStartValue] = useState(0)
-    const [maxValue, setMaxValue] = useState(10)
+    const [maxValue, setMaxValue] = useState(5)
     const [counter, setCounter] = useState(startValue)
     const [isSetting, setIsSetting] = useState(false)
     const [error, setError] = useState(false)
 
-    const onChangeStartValue = (event: ChangeEvent<HTMLInputElement>) => {
-        setStartValue(+event.currentTarget.value)
+    const onChangeStartValue = (value: number) => {
+        setStartValue(value)
+        if (value < 0 || value >= maxValue)
+            setError(true)
+        else
+            setError(false)
         setIsSetting(true)
     }
 
-    const onChangeMaxValue = (event: ChangeEvent<HTMLInputElement>) => {
-        setMaxValue(+event.currentTarget.value)
+    const onChangeMaxValue = (value: number) => {
+        setMaxValue(value)
+        if (value <= startValue)
+            setError(true)
+        else
+            setError(false)
         setIsSetting(true)
     }
 
@@ -32,7 +40,7 @@ function App() {
     }
 
     const resetCounter = () => {
-        setCounter(0)
+        setCounter(startValue)
     }
 
     return (
@@ -46,7 +54,9 @@ function App() {
                 setSettings={setSettings}
             />
             <CounterBlock
+                maxValue={maxValue}
                 counter={counter}
+                error={error}
                 increaseCounter={increaseCounter}
                 resetCounter={resetCounter}
                 isSetting={isSetting}

@@ -1,14 +1,14 @@
 import {InputSetting} from './InputSetting';
 import {Button} from '../styles/Button';
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import {Block, SetButtonBlock, SetUpperBlock} from '../styles/StructurBlocksStyles';
 
 type SettingsBlockPropsType = {
     maxValue: number,
     startValue: number,
     isSetting: boolean,
-    onChangeMaxValue: (event: ChangeEvent<HTMLInputElement>) => void,
-    onChangeStartValue: (event: ChangeEvent<HTMLInputElement>) => void,
+    onChangeMaxValue: (value: number) => void,
+    onChangeStartValue: (value: number) => void,
     setSettings: () => void
 }
 

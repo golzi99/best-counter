@@ -9,10 +9,10 @@ export const Button = styled.button`
   font-size: 48px;
   border-radius: 24px;
   height: fit-content;
+  transition: background-color 0.3s ease;
 
   &:hover {
     background-color: aqua;
-    transition: background-color 0.3s ease;
   }
   
   &:disabled {

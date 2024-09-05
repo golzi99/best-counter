@@ -5,14 +5,19 @@ import {myTheme} from '../styles/Theme.styled';
 type InputSettingPropsType = {
     title: string,
     value: number,
-    onChangeHandler: (event: ChangeEvent<HTMLInputElement>) => void
+    onChangeHandler: (value: number) => void
 }
 
 export const InputSetting = ({title, value, onChangeHandler}: InputSettingPropsType) => {
+
+    const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+        onChangeHandler(+event.currentTarget.value)
+    }
+
     return (
         <StyledInputSetting>
-            {title}:
-            <Input type={'number'} value={value} onChange={(event) => onChangeHandler(event)}/>
+            {title} :
+            <Input type={'number'} value={value} onChange={(event) => onChange(event)}/>
         </StyledInputSetting>
     );
 };
