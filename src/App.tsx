@@ -17,19 +17,11 @@ function App() {
 
     const onChangeStartValue = (value: number) => {
         setStartValue(value)
-        // if (value < 0 || value >= maxValue)
-        //     setError(true)
-        // else
-        //     setError(false)
         setIsSetting(true)
     }
 
     const onChangeMaxValue = (value: number) => {
         setMaxValue(value)
-        // if (value <= startValue)
-        //     setError(true)
-        // else
-        //     setError(false)
         setIsSetting(true)
     }
 
