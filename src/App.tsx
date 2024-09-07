@@ -5,15 +5,30 @@ import {SettingsBlock} from './components/SettingsBlock';
 import {CounterBlock} from './components/CounterBlock';
 
 function App() {
-    const [startValue, setStartValue] = useState(0)
-    const [maxValue, setMaxValue] = useState(10)
-    const [counter, setCounter] = useState(startValue)
+    const [startValue, setStartValue] = useState(() => {
+        const storedStartValue = localStorage.getItem('startValue');
+        return storedStartValue ? JSON.parse(storedStartValue) : 0;
+    })
+    const [maxValue, setMaxValue] = useState(() => {
+        const storedMaxValue = localStorage.getItem('maxValue');
+        return storedMaxValue ? JSON.parse(storedMaxValue) : 10;
+    })
+    const [counter, setCounter] = useState(() => {
+        const storedCounter = localStorage.getItem('counterValue');
+        return storedCounter ? JSON.parse(storedCounter) : startValue;
+    })
     const [isSetting, setIsSetting] = useState(false)
     const [error, setError] = useState(false)
 
     useEffect(() => {
         startValue < 0 || startValue >= maxValue ? setError(true) : setError(false)
+        localStorage.setItem('startValue', JSON.stringify(startValue))
+        localStorage.setItem('maxValue', JSON.stringify(maxValue))
     }, [startValue, maxValue])
+
+    useEffect(() => {
+        localStorage.setItem('counterValue', JSON.stringify(counter))
+    }, [counter])
 
     const onChangeStartValue = (value: number) => {
         setStartValue(value)
@@ -31,11 +46,11 @@ function App() {
     }
 
     const increaseCounter = () => {
-        setCounter(c => c + 1)
+        setCounter((c: number) => c + 1)
     }
 
     const decreaseCounter = () => {
-        setCounter(c => c - 1)
+        setCounter((c: number) => c - 1)
     }
 
     const resetCounter = () => {
