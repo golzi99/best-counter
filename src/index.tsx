@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import {ThemeProvider} from 'styled-components';
 import {GlobalStyled} from './styles/Global.styled';
 import {myTheme} from './styles/Theme.styled';
+import {Provider} from 'react-redux';
+import {store} from './store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -14,8 +16,10 @@ const root = ReactDOM.createRoot(
 root.render(
     <ThemeProvider theme={myTheme}>
         <React.StrictMode>
-            <App />
-            <GlobalStyled/>
+            <Provider store={store}>
+                <App />
+                <GlobalStyled/>
+            </Provider>
         </React.StrictMode>
     </ThemeProvider>
 
