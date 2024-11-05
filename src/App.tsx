@@ -48,9 +48,11 @@ function App() {
     //     localStorage.setItem('counterValue', JSON.stringify(counter))
     // }, [counter])
 
-    useEffect(() => {
-        dispatch(setCounterStartValueAC(settings.startValue))
-    }, [])
+
+    // useEffect(() => {
+    //     dispatch(setCounterStartValueAC(settings.startValue))
+    // }, [])
+    // тогда этот не надо ?
 
     const onChangeStartValue = (value: number) => {
         dispatch(changeStartValueAC(value))

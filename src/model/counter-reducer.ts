@@ -10,9 +10,9 @@ export type IncreaseCounterActionType = ReturnType<typeof increaseCounterAC>
 export type DecreaseCounterActionType = ReturnType<typeof decreaseCounterAC>
 
 
-type ActionType = IncreaseCounterActionType | DecreaseCounterActionType | SetCounterStartValueActionType
+export type CounterActionType = IncreaseCounterActionType | DecreaseCounterActionType | SetCounterStartValueActionType
 
-export const counterReducer = (state: CountType = initialState, action: ActionType): CountType => {
+export const counterReducer = (state: CountType = initialState, action: CounterActionType): CountType => {
     switch (action.type) {
         case 'INCREASE-COUNTER':
             return {...state, count: state.count + 1};

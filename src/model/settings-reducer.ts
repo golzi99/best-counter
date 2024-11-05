@@ -13,12 +13,12 @@ export type SetSettingsActionType = ReturnType<typeof setSettingsAC>
 export type SetErrorActionType = ReturnType<typeof setErrorAC>
 export type SetCounterStartValueActionType = ReturnType<typeof setCounterStartValueAC>
 
-type ActionType = ChangeStartValueActionType
+export type SettingsActionType = ChangeStartValueActionType
     | ChangeMaxValueActionType
     | SetSettingsActionType
     | SetErrorActionType
 
-export const settingsReducer = (state: SettingsType = initialState, action: ActionType): SettingsType => {
+export const settingsReducer = (state: SettingsType = initialState, action: SettingsActionType): SettingsType => {
     switch (action.type) {
         case 'CHANGE-START-VALUE':
             return {...state, startValue: action.payload.value}
